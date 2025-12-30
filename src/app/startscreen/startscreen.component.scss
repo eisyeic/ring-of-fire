@@ -1,0 +1,41 @@
+.start-screen {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  background: RGB(110, 37, 5);
+  background: linear-gradient(
+    180deg,
+    rgba(110, 37, 5, 1) 0%,
+    rgba(27, 9, 5, 1) 10%,
+    rgba(27, 9, 5, 1) 90%,
+    rgba(153, 32, 2, 1) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > img {
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.start-label-box {
+  position: absolute;
+  bottom: 3vh;
+  display: flex;
+  justify-content: center;
+  width: 20vw;
+  height: auto;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(1.2);
+    }
+  }
+}
