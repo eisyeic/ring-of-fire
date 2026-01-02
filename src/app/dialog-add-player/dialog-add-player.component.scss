@@ -1,0 +1,9 @@
+.mat-mdc-dialog-actions {
+    justify-content: center !important;
+}
+
+::ng-deep {
+  .mat-mdc-dialog-content {
+    padding-bottom: 0 !important;
+  }
+}
