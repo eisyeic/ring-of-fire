@@ -1,33 +1,38 @@
 export class Game {
-    public players: string[] = [];
-    public stack: string[] = [];
-    public playedCards: string[] = [];
-    public currentPlayer: number = 0;
+  public players: string[] = [];
+  public stack: string[] = [];
+  public playedCards: string[] = [];
+  public currentPlayer: number = 0;
 
-    constructor() {
-        for(let i = 1; i < 14; i++) {
-            this.stack.push('ace_' + i);
-            this.stack.push('clubs_' + i);
-            this.stack.push('diamonds_' + i);
-            this.stack.push('hearts_' + i);
-        }
+  constructor() {
+    this.players = [];
+    this.stack = this.createStack();
+    this.playedCards = [];
+    this.currentPlayer = 0;
+  }
 
-        shuffle(this.stack)
-    }
-}
+  public createStack(): string[] {
+    let stack: string[] = [];
+    const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
+    const values = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'];
 
-function shuffle(array: string[]) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (0 !== currentIndex) {
-
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+    for (let suit of suits) {
+      for (let value of values) {
+        stack.push(`${suit}_${value}`);
+      }
     }
 
-    return array;
+    // Mischen des Stapels
+    stack = this.shuffleArray(stack);
+    return stack;
+  }
+
+  private shuffleArray(array: string[]): string[] {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
 }
